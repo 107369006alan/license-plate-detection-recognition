@@ -1,15 +1,17 @@
 
 
 plate_cfg={
-	#thresholds for detecting bounding boxes of chars form plate image
+	#ratio thresholds for detecting bounding boxes of chars form plate image
+	#for example, the min height of a character in a license plate should be at least 0.2*hight of the plate
 	'width_range_threshold': (0.03, 0.3),
 	'height_range_threshold': (0.2, 0.7),
+	#the height different of each character should be <10%
 	'height_diff_threshold': 0.1,
-	#threshold of different of centre point for assuming letter are in same line on the plate
+	#if the y_axis different of two characters is >0.75*avg height of characters, then they are assumed to be in different line
 	'same_line_threshold': 0.75,
 	#padding of image to detect contours that are too close to border(pixel)
 	'image_padding': 3,
-	#rescalling char roi before ocr
+	#rescalling char roi before ocr, higher value might be useful when detecting blur images.
 	'char_resize_factor': 1,
 	#padding of the roi before used for tesseract ocr(pixel)
 	'char_padding': 15,
